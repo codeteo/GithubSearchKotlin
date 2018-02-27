@@ -24,8 +24,8 @@ buildscript {
             'retrofitVersion' : '2.3.0',
             'okHttpVersion' : '3.8.1',
             'rxJava' : '2.1.5',
-            'rxAndroid': '2.0.1'
-
+            'rxAndroid': '2.0.1',
+            'timber': '4.6.0'
     ]
 
     repositories {
