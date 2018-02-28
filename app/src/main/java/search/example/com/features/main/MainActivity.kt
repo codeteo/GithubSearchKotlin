@@ -10,6 +10,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import dagger.android.support.DaggerAppCompatActivity
 import search.example.com.R
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
@@ -32,13 +33,30 @@ class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
         ButterKnife.bind(this)
 
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "TITLE"
+        supportActionBar?.title = "SEARCH"
 
         presenter.onLoadData()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        return super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.menu_main, menu)
+
+        val menuItem = menu?.findItem(R.id.menu_main_search)
+        val searchView = menuItem?.actionView as android.support.v7.widget.SearchView
+
+        searchView.setOnQueryTextListener(object :  android.support.v7.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                Timber.i("onQueryTextSubmit")
+                return true
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                Timber.i("onQueryTextChange")
+                return true
+            }
+        })
+
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
