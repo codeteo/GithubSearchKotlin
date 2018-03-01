@@ -10,7 +10,6 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import dagger.android.support.DaggerAppCompatActivity
 import search.example.com.R
-import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
@@ -44,16 +43,16 @@ class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
         val menuItem = menu?.findItem(R.id.menu_main_search)
         val searchView = menuItem?.actionView as android.support.v7.widget.SearchView
 
-        searchView.setOnQueryTextListener(object :  android.support.v7.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(p0: String?): Boolean {
-                Timber.i("onQueryTextSubmit")
-                return true
+        searchView.setOnQueryTextListener(object : android.support.v7.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String): Boolean {
+                if (!searchView.isIconified) {
+                    searchView.isIconified = true
+                }
+                presenter.onQuery(query)
+                return false
             }
 
-            override fun onQueryTextChange(p0: String?): Boolean {
-                Timber.i("onQueryTextChange")
-                return true
-            }
+            override fun onQueryTextChange(string: String): Boolean = false
         })
 
         return true

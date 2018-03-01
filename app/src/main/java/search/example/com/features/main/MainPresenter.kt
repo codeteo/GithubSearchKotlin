@@ -9,6 +9,11 @@ import javax.inject.Inject
 
 class MainPresenter @Inject constructor(val view: MainMVP.View) : MainMVP.Presenter {
 
+
+    override fun onQuery(query: String) {
+        Timber.i("Execute Query")
+    }
+
     override fun onLoadData() {
         Timber.i("Load data")
     }

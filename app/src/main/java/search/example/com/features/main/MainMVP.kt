@@ -16,6 +16,8 @@ interface MainMVP {
 
         fun onLoadData()
 
+        fun onQuery(query: String)
+
     }
 
 }
