@@ -25,7 +25,8 @@ buildscript {
             'okHttpVersion' : '3.8.1',
             'rxJava' : '2.1.5',
             'rxAndroid': '2.0.1',
-            'timber': '4.6.0'
+            'timber': '4.6.0',
+            'picasso': '2.5.2'
     ]
 
     repositories {

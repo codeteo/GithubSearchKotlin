@@ -8,9 +8,10 @@ import android.widget.ProgressBar
 import butterknife.BindView
 import butterknife.ButterKnife
 import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import search.example.com.R
 import search.example.com.data.models.RepoItem
-import timber.log.Timber
+import search.example.com.features.main.adapter.SearchAdapter
 import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
@@ -26,6 +27,8 @@ class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
 
     @Inject
     lateinit var presenter: MainPresenter
+
+    lateinit var adapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +64,7 @@ class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
 
     override fun showData(data: List<RepoItem>?) {
         if (data != null) {
-            Timber.i("SHOWS DATA")
+            rv_main_recyclerview.adapter = SearchAdapter(data)
         }
     }
 
