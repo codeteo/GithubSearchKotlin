@@ -6,6 +6,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 import search.example.com.GithubSearchApplication
 import search.example.com.di.builder.ActivityBuilder
 import search.example.com.di.module.ApplicationModule
+import search.example.com.di.module.NetworkModule
 import javax.inject.Singleton
 
 /**
@@ -17,6 +18,7 @@ import javax.inject.Singleton
             modules = arrayOf(
                     AndroidSupportInjectionModule::class,
                     ApplicationModule::class,
+                    NetworkModule::class,
                     ActivityBuilder::class)
 )
 interface ApplicationComponent {
