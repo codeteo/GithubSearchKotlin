@@ -10,6 +10,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import search.example.com.data.api.GithubApi
 import search.example.com.utils.BaseUrlInterceptor
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -61,4 +62,9 @@ class NetworkModule {
                 .build()
     }
 
+    @Provides
+    @Singleton
+    fun providesGithubApi(retrofit: Retrofit): GithubApi {
+        return retrofit.create(GithubApi::class.java)
+    }
 }
