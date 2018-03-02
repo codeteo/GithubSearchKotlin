@@ -8,6 +8,8 @@ import search.example.com.GithubSearchApplication
 import search.example.com.data.Constants
 import search.example.com.utils.BaseUrlInterceptor
 import search.example.com.utils.NetworkUtils
+import search.example.com.utils.schedulers.BaseSchedulerProvider
+import search.example.com.utils.schedulers.SchedulerProvider
 import javax.inject.Singleton
 
 
@@ -41,6 +43,12 @@ class ApplicationModule {
     @Singleton
     fun providesNetworkUtils(context: Context): NetworkUtils {
         return NetworkUtils(context)
+    }
+
+    @Provides
+    @Singleton
+    fun providesSchedulers(schedulerProvider: BaseSchedulerProvider): SchedulerProvider {
+        return SchedulerProvider.instance
     }
 
 }
