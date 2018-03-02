@@ -26,7 +26,7 @@ class MainPresenter
                     run {
                         if (response.isSuccessful) {
                             val body = response.body()
-                            Timber.i("Print body == %s", body.toString())
+                            view.showData(body?.items)
                         }
                     }
                 }, {

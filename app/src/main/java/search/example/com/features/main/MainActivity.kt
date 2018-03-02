@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.Menu
-import android.view.MenuItem
 import android.widget.ProgressBar
 import butterknife.BindView
 import butterknife.ButterKnife
 import dagger.android.support.DaggerAppCompatActivity
 import search.example.com.R
+import search.example.com.data.models.RepoItem
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
@@ -58,12 +59,10 @@ class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return super.onOptionsItemSelected(item)
-    }
-
-    override fun showData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showData(data: List<RepoItem>?) {
+        if (data != null) {
+            Timber.i("SHOWS DATA")
+        }
     }
 
 }
