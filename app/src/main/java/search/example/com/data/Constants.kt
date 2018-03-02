@@ -5,5 +5,5 @@ package search.example.com.data
  */
 
 object Constants {
-    const val BASE_URL = "https://api.github.com"
+    const val BASE_URL: String = "https://api.github.com"
 }

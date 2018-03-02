@@ -21,7 +21,7 @@ import javax.inject.Singleton
 @Module
 class ApplicationModule {
 
-    private val PRODUCTION_API_BASE_URL = HttpUrl.parse(Constants.BASE_URL)
+    private val PRODUCTION_API_BASE_URL = HttpUrl.parse(Constants.BASE_URL)!!
 
     @Provides
     @Singleton
@@ -29,7 +29,7 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun providesBaseUrl(): HttpUrl? {
+    fun providesBaseUrl(): HttpUrl {
         return PRODUCTION_API_BASE_URL
     }
 
@@ -47,7 +47,7 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun providesSchedulers(schedulerProvider: BaseSchedulerProvider): SchedulerProvider {
+    fun providesSchedulers(): BaseSchedulerProvider {
         return SchedulerProvider.instance
     }
 

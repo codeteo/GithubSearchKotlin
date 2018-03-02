@@ -24,7 +24,7 @@ class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
     lateinit var progressBar: ProgressBar
 
     @Inject
-    lateinit var presenter: MainMVP.Presenter
+    lateinit var presenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
