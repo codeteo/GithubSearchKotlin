@@ -9,10 +9,10 @@ import com.google.gson.annotations.SerializedName
 data class SearchRepositoryResponse(
 
         @SerializedName("total_count")
-        val  totalCount: Int?,
+        var totalCount: Int?,
 
         @SerializedName("incomplete_results")
-        val incompleteResults: Boolean?,
+        var incompleteResults: Boolean?,
 
         @SerializedName("items")
         val items: List<RepoItem>

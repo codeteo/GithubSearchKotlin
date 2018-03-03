@@ -23,7 +23,7 @@ class TestGithubSearchApplication: Application(), HasActivityInjector {
     override fun onCreate() {
         super.onCreate()
 
-        DaggerTestApplicationComponent.builder()
+        testAppComponent = DaggerTestApplicationComponent.builder()
                 .application(this)
                 .build()
 

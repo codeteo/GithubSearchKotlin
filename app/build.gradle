@@ -16,7 +16,7 @@ android {
         versionCode buildConfig.version.code
         versionName buildConfig.version.name
 
-        testInstrumentationRunner "search.example.com.debug.CustomTestRunner"
+        testInstrumentationRunner "search.example.com.CustomTestRunner"
     }
 
     compileOptions {
