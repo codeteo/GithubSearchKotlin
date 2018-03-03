@@ -29,9 +29,9 @@ interface TestApplicationComponent {
     interface Builder {
 
         @BindsInstance
-        fun app(app: Application): Builder
+        fun application(app: Application) : Builder
 
-        fun build(): TestGithubSearchApplication
+        fun build(): TestApplicationComponent
 
     }
 

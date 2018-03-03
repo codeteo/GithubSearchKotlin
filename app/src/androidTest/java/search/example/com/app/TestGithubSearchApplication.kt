@@ -4,6 +4,7 @@ import android.app.Activity
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
 import search.example.com.app.di.TestApplicationComponent
 import javax.inject.Inject
 
@@ -11,12 +12,14 @@ import javax.inject.Inject
  * Test application class
  */
 
-class TestGithubSearchApplication: DaggerApplication() {
+class TestGithubSearchApplication: DaggerApplication(), HasActivityInjector {
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
 
     lateinit var testAppComponent: TestApplicationComponent
+
+//    var component: DaggerTestApplicationComponent
 
     override fun onCreate() {
         super.onCreate()
@@ -24,12 +27,11 @@ class TestGithubSearchApplication: DaggerApplication() {
     }
 
     fun initInjection() {
-        var component: DaggerTestApplicationComponent
+        DaggerTestApplicationComponent
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
 
 }
