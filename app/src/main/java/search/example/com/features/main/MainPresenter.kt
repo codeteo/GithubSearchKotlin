@@ -31,8 +31,7 @@ class MainPresenter
                         }
                     }
                 }, {
-                    t: Throwable? ->
-                    Timber.i("throw: %s", t?.stackTrace)
+                    throwable -> Timber.i("throw: %s", throwable?.stackTrace)
                 })
     }
 
