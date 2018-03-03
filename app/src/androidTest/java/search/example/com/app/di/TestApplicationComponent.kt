@@ -5,6 +5,7 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
 import search.example.com.app.TestGithubSearchApplication
+import search.example.com.app.screens.MainActivityTest
 import search.example.com.di.builder.ActivityBuilder
 import search.example.com.di.module.ApplicationModule
 import javax.inject.Singleton
@@ -24,6 +25,8 @@ import javax.inject.Singleton
 interface TestApplicationComponent {
 
     fun inject(app: TestGithubSearchApplication)
+
+    fun inject(activity: MainActivityTest)
 
     @Component.Builder
     interface Builder {

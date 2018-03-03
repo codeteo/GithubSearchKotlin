@@ -16,7 +16,7 @@ android {
         versionCode buildConfig.version.code
         versionName buildConfig.version.name
 
-        testInstrumentationRunner "search.example.com.CustomTestRunner"
+        testInstrumentationRunner "search.example.com.debug.CustomTestRunner"
     }
 
     compileOptions {
@@ -78,4 +78,5 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-android:$versions.mockito"
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    kaptAndroidTest "com.google.dagger:dagger-android-processor:$versions.daggerVersion"
 }

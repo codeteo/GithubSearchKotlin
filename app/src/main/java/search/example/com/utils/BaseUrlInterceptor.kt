@@ -31,7 +31,7 @@ class BaseUrlInterceptor(private val realBaseUrl: String) : Interceptor {
         if (host != null && realBaseUrl != host) {
             val newUrl = HttpUrl.parse(host!!)
             request = request.newBuilder()
-                    .url(newUrl)
+                    .url(newUrl!!)
                     .build()
         }
         return chain.proceed(request)
