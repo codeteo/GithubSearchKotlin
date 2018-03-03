@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.Menu
+import android.view.View
 import android.widget.ProgressBar
 import butterknife.BindView
 import butterknife.ButterKnife
@@ -27,8 +28,6 @@ class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
 
     @Inject
     lateinit var presenter: MainPresenter
-
-    lateinit var adapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +65,14 @@ class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
         if (data != null) {
             rv_main_recyclerview.adapter = SearchAdapter(data)
         }
+    }
+
+    override fun showProgressBar() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    override fun hideProgressBar() {
+        progressBar.visibility = View.GONE
     }
 
 }

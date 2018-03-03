@@ -11,22 +11,23 @@ import javax.inject.Inject
 
 class MainPresenter
     @Inject constructor(
-            val view: MainMVP.View,
+            val view: MainMVP.View?,
             val service: GithubApi,
             val schedulerProvider: BaseSchedulerProvider
     ) : MainMVP.Presenter {
 
     override fun onQuery(query: String) {
-        Timber.i("Execute Query")
+        view?.showProgressBar()
         service.search(query)
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.androidMainThread())
                 .subscribe({
                     response ->
                     run {
+                        view?.hideProgressBar()
                         if (response.isSuccessful) {
                             val body = response.body()
-                            view.showData(body?.items)
+                            view?.showData(body?.items)
                         }
                     }
                 }, {

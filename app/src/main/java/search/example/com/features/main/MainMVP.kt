@@ -12,6 +12,9 @@ interface MainMVP {
 
         fun showData(data: List<RepoItem>?)
 
+        fun showProgressBar()
+
+        fun hideProgressBar()
     }
 
     interface Presenter {
