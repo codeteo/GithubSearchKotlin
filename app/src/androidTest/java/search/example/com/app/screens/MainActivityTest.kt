@@ -1,10 +1,11 @@
 package search.example.com.app.screens
 
 import android.support.test.espresso.Espresso.onView
+import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.action.ViewActions.typeText
-import android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom
-import android.support.test.espresso.matcher.ViewMatchers.withId
+import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import android.widget.AutoCompleteTextView
@@ -23,7 +24,6 @@ import search.example.com.data.models.Owner
 import search.example.com.data.models.RepoItem
 import search.example.com.data.models.SearchRepositoryResponse
 import search.example.com.features.main.MainActivity
-import search.example.com.features.main.MainPresenter
 import javax.inject.Inject
 
 
@@ -39,11 +39,7 @@ class MainActivityTest {
     var activityTestRule = ActivityTestRule(MainActivity::class.java)
 
     @Inject
-    lateinit var presenter: MainPresenter
-
-    @Inject
     lateinit var service: GithubApi
-
 
     @Before
     fun setUp() {
@@ -61,6 +57,12 @@ class MainActivityTest {
 
         onView(isAssignableFrom(AutoCompleteTextView::class.java))
                 .perform(typeText("retrofit"))
+
+        onView(isAssignableFrom(AutoCompleteTextView::class.java))
+                .perform(ViewActions.pressImeActionButton())
+
+        onView(withText("Jake Wharton"))
+                .check(matches(isDisplayed()))
 
     }
 
