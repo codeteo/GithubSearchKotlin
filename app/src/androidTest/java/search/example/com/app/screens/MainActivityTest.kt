@@ -53,14 +53,14 @@ class MainActivityTest {
 
     @Test
     fun showsData() {
-        `when`(service.search("ramones"))
+        `when`(service.search("retrofit"))
                 .thenReturn(Observable.just(getResponse()))
 
         onView(withId(R.id.menu_main_search))
                 .perform(click())
 
         onView(isAssignableFrom(AutoCompleteTextView::class.java))
-                .perform(typeText("ramones"))
+                .perform(typeText("retrofit"))
 
     }
 
