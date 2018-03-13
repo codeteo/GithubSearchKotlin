@@ -12,7 +12,7 @@ import search.example.com.data.models.RepoItem
 
 class SearchViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-    fun bindItem(repoItem: RepoItem) {
+    fun bindItem(repoItem: RepoItem, listener: (RepoItem) -> Unit) {
         with(repoItem) {
             itemView.tv_item_name.text = owner.login
             Picasso.with(itemView.context)
@@ -20,6 +20,9 @@ class SearchViewHolder(view: View): RecyclerView.ViewHolder(view) {
                     .fit()
                     .centerCrop()
                     .into(itemView.iv_item_avatar)
+        }
+        with(itemView) {
+            setOnClickListener{ listener(repoItem) }
         }
     }
 

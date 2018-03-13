@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
 import dagger.android.support.DaggerAppCompatActivity
@@ -17,17 +18,11 @@ import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
 
-    @BindView(R.id.main_toolbar)
-    lateinit var toolbar: Toolbar
+    @BindView(R.id.main_toolbar) lateinit var toolbar: Toolbar
+    @BindView(R.id.rv_main_recyclerview) lateinit var recyclerView: RecyclerView
+    @BindView(R.id.pb_main_progress_bar) lateinit var progressBar: ProgressBar
 
-    @BindView(R.id.rv_main_recyclerview)
-    lateinit var recyclerView: RecyclerView
-
-    @BindView(R.id.pb_main_progress_bar)
-    lateinit var progressBar: ProgressBar
-
-    @Inject
-    lateinit var presenter: MainPresenter
+    @Inject lateinit var presenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +58,9 @@ class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
 
     override fun showData(data: List<RepoItem>?) {
         if (data != null) {
-            rv_main_recyclerview.adapter = SearchAdapter(data)
+            rv_main_recyclerview.adapter = SearchAdapter(data) {
+                Toast.makeText(this, "${it.owner.login} clicked!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
