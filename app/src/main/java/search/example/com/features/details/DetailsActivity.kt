@@ -6,6 +6,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import dagger.android.support.DaggerAppCompatActivity
 import search.example.com.R
+import javax.inject.Inject
 
 /**
  * Details screen displaying details for a selected user.
@@ -15,6 +16,8 @@ class DetailsActivity : DaggerAppCompatActivity(), DetailsMVP.View {
 
     @BindView(R.id.main_toolbar) lateinit var toolbar: Toolbar
 
+    @Inject lateinit var presenter: DetailsPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
@@ -22,6 +25,8 @@ class DetailsActivity : DaggerAppCompatActivity(), DetailsMVP.View {
 
         setSupportActionBar(toolbar)
         supportActionBar?.title = "DETAILS"
+
+        presenter.onLoadData()
     }
 
     override fun showData() {

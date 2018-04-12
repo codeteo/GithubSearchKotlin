@@ -1,9 +1,13 @@
 package search.example.com.features.details
 
-class DetailsPresenter : DetailsMVP.Presenter {
+import timber.log.Timber
+import javax.inject.Inject
+
+class DetailsPresenter
+    @Inject constructor() : DetailsMVP.Presenter {
 
     override fun onLoadData() {
-        TODO("not implemented")
+        Timber.i("onLoadData")
     }
 
 }
