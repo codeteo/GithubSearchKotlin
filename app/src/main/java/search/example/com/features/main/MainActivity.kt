@@ -2,11 +2,12 @@ package search.example.com.features.main
 
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.SearchView
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.View
 import android.widget.ProgressBar
-import android.widget.Toast
+import androidx.core.widget.toast
 import butterknife.BindView
 import butterknife.ButterKnife
 import dagger.android.support.DaggerAppCompatActivity
@@ -39,9 +40,9 @@ class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
         menuInflater.inflate(R.menu.menu_main, menu)
 
         val menuItem = menu?.findItem(R.id.menu_main_search)
-        val searchView = menuItem?.actionView as android.support.v7.widget.SearchView
+        val searchView = menuItem?.actionView as SearchView
 
-        searchView.setOnQueryTextListener(object : android.support.v7.widget.SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String): Boolean {
                 if (!searchView.isIconified) {
                     searchView.isIconified = true
@@ -59,7 +60,7 @@ class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
     override fun showData(data: List<RepoItem>?) {
         if (data != null) {
             rv_main_recyclerview.adapter = SearchAdapter(data) {
-                Toast.makeText(this, "${it.owner.login} clicked!", Toast.LENGTH_SHORT).show()
+                toast("${it.owner.login} clicked!")
             }
         }
     }

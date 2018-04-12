@@ -2,9 +2,9 @@
 
 buildscript {
     ext.buildConfig = [
-            'compileSdk': 26,
+            'compileSdk': 27,
             'minSdk': 24,
-            'targetSdk': 26,
+            'targetSdk': 27,
 
             'version': [
                     'major': 1,
@@ -19,7 +19,7 @@ buildscript {
 
     ext.versions = [
             'kotlin_version' : '1.1.51',
-            'supportLibraryVersion' : '26.1.0',
+            'supportLibraryVersion' : '27.0.2',
             'daggerVersion' : '2.11',
             'retrofitVersion' : '2.3.0',
             'okHttpVersion' : '3.8.1',
@@ -27,7 +27,8 @@ buildscript {
             'rxAndroid': '2.0.1',
             'timber': '4.6.0',
             'picasso': '2.5.2',
-            'mockito': '2.13.0'
+            'mockito': '2.13.0',
+            'androidKtx': '0.3'
     ]
 
     repositories {

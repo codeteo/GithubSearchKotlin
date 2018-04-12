@@ -11,7 +11,7 @@ import search.example.com.data.models.RepoItem
  * Displays search results.
  */
 
-class SearchAdapter(var dataset: List<RepoItem>, val listener: (RepoItem) -> Unit):
+class SearchAdapter(private var dataset: List<RepoItem>, private val listener: (RepoItem) -> Unit):
     RecyclerView.Adapter<SearchViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
