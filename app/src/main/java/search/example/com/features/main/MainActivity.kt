@@ -1,5 +1,6 @@
 package search.example.com.features.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
@@ -7,13 +8,13 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.View
 import android.widget.ProgressBar
-import androidx.core.widget.toast
 import butterknife.BindView
 import butterknife.ButterKnife
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import search.example.com.R
 import search.example.com.data.models.RepoItem
+import search.example.com.features.details.DetailsActivity
 import search.example.com.features.main.adapter.SearchAdapter
 import javax.inject.Inject
 
@@ -60,7 +61,8 @@ class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
     override fun showData(data: List<RepoItem>?) {
         if (data != null) {
             rv_main_recyclerview.adapter = SearchAdapter(data) {
-                toast("${it.owner.login} clicked!")
+                val intent = Intent(this, DetailsActivity::class.java)
+                startActivity(intent)
             }
         }
     }

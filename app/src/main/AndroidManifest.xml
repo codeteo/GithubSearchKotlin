@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".features.details.DetailsActivity"/>
+        <activity android:name=".features.details.DetailsActivity" android:theme="@style/AppTheme"/>
 
     </application>
 
