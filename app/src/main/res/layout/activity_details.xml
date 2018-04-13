@@ -4,6 +4,8 @@
 
     <include layout="@layout/toolbar"/>
 
+    <include layout="@layout/user_profile"/>
+
     <include layout="@layout/progressbar"/>
 
 </FrameLayout>
