@@ -31,7 +31,11 @@ class MainPresenter
                         }
                     }
                 }, {
-                    throwable -> Timber.i("throw: %s", throwable?.stackTrace)
+                    throwable ->
+                    run {
+                        view?.hideProgressBar()
+                        Timber.i("throw: %s", throwable?.stackTrace)
+                    }
                 })
     }
 
