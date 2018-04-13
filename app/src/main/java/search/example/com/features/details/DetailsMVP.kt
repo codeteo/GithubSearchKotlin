@@ -17,7 +17,7 @@ interface DetailsMVP {
 
     interface Presenter {
 
-        fun onLoadData()
+        fun onLoadData(ownerId: String)
 
     }
 

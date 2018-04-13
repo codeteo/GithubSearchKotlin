@@ -6,7 +6,7 @@ import javax.inject.Inject
 class DetailsPresenter
     @Inject constructor() : DetailsMVP.Presenter {
 
-    override fun onLoadData() {
+    override fun onLoadData(ownerId: String) {
         Timber.i("onLoadData")
     }
 

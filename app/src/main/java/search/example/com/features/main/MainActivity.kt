@@ -11,10 +11,10 @@ import android.widget.ProgressBar
 import butterknife.BindView
 import butterknife.ButterKnife
 import dagger.android.support.DaggerAppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import search.example.com.R
 import search.example.com.data.models.RepoItem
 import search.example.com.features.details.DetailsActivity
+import search.example.com.features.details.PARAM_USERNAME
 import search.example.com.features.main.adapter.SearchAdapter
 import javax.inject.Inject
 
@@ -60,8 +60,9 @@ class MainActivity : DaggerAppCompatActivity(), MainMVP.View {
 
     override fun showData(data: List<RepoItem>?) {
         if (data != null) {
-            rv_main_recyclerview.adapter = SearchAdapter(data) {
+            recyclerView.adapter = SearchAdapter(data) {
                 val intent = Intent(this, DetailsActivity::class.java)
+                intent.putExtra(PARAM_USERNAME, it.owner.login)
                 startActivity(intent)
             }
         }

@@ -34,6 +34,9 @@ data class RepoItem(
 
 data class Owner(
 
+        @SerializedName("id")
+        val id: String,
+
         @SerializedName("avatar_url")
         val avatarUrl: String?,
 
