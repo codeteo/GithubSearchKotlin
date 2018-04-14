@@ -11,7 +11,8 @@ import search.example.com.data.models.RepoItem
  * Displays search results.
  */
 
-class SearchAdapter(var dataset: List<RepoItem>): RecyclerView.Adapter<SearchViewHolder>() {
+class SearchAdapter(private var dataset: List<RepoItem>, private val listener: (RepoItem) -> Unit):
+    RecyclerView.Adapter<SearchViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -20,7 +21,7 @@ class SearchAdapter(var dataset: List<RepoItem>): RecyclerView.Adapter<SearchVie
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
-        holder.bindItem(dataset[position])
+        holder.bindItem(dataset[position], listener)
     }
 
     override fun getItemCount(): Int {
