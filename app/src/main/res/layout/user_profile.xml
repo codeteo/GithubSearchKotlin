@@ -6,7 +6,7 @@
     android:layout_marginTop="?attr/actionBarSize">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_user_profile_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -18,26 +18,26 @@
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/tv_user_profile_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/iv_user_profile_avatar"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_company"
+        android:id="@+id/tv_user_profile_company"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+        app:layout_constraintStart_toEndOf="@+id/iv_user_profile_avatar"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_profile_name" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline3"
@@ -47,7 +47,7 @@
         app:layout_constraintGuide_begin="88dp" />
 
     <TextView
-        android:id="@+id/tv_bio"
+        android:id="@+id/tv_user_profile_bio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -65,7 +65,7 @@
         app:layout_constraintGuide_begin="131dp" />
 
     <TextView
-        android:id="@+id/tv_following"
+        android:id="@+id/tv_user_profile_following"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -75,7 +75,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/tv_followers"
+        android:id="@+id/tv_user_profile_followers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -92,7 +92,7 @@
         android:text="Following"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_following" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_profile_following" />
 
     <TextView
         android:id="@+id/textView8"
@@ -102,7 +102,7 @@
         android:text="Folllowers"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_followers" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_profile_followers" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline5"

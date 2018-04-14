@@ -3,13 +3,15 @@ package search.example.com.features.details
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.view.View
+import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
+import com.squareup.picasso.Picasso
 import dagger.android.support.DaggerAppCompatActivity
 import search.example.com.R
 import search.example.com.features.details.models.UserProfileViewModel
-import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -22,6 +24,12 @@ class DetailsActivity : DaggerAppCompatActivity(), DetailsMVP.View {
 
     @BindView(R.id.main_toolbar) lateinit var toolbar: Toolbar
     @BindView(R.id.pb_progressbar) lateinit var progressBar: ProgressBar
+    @BindView(R.id.iv_user_profile_avatar) lateinit var ivAvatar: ImageView
+    @BindView(R.id.tv_user_profile_name) lateinit var tvName: TextView
+    @BindView(R.id.tv_user_profile_company) lateinit var tvCompany: TextView
+    @BindView(R.id.tv_user_profile_bio) lateinit var tvBio: TextView
+    @BindView(R.id.tv_user_profile_following) lateinit var tvFollowing: TextView
+    @BindView(R.id.tv_user_profile_followers) lateinit var tvFollowers: TextView
 
     @Inject lateinit var presenter: DetailsPresenter
 
@@ -45,7 +53,17 @@ class DetailsActivity : DaggerAppCompatActivity(), DetailsMVP.View {
     }
 
     override fun showData(profile: UserProfileViewModel) {
-        Timber.i("MESA STO SHOW DATA")
+        Picasso.with(this)
+                .load(profile.avatarUrl)
+                .centerCrop()
+                .fit()
+                .into(ivAvatar)
+
+        tvName.text = profile.name
+        tvCompany.text = profile.company
+        tvBio.text = profile.bio
+        tvFollowing.text = profile.following.toString()
+        tvFollowers.text = profile.followers.toString()
     }
 
     override fun showProgressBar() {
