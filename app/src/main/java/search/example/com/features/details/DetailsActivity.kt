@@ -12,6 +12,7 @@ import com.squareup.picasso.Picasso
 import dagger.android.support.DaggerAppCompatActivity
 import search.example.com.R
 import search.example.com.features.details.models.UserProfileViewModel
+import search.example.com.utils.CircleTransformPicasso
 import javax.inject.Inject
 
 /**
@@ -55,6 +56,7 @@ class DetailsActivity : DaggerAppCompatActivity(), DetailsMVP.View {
     override fun showData(profile: UserProfileViewModel) {
         Picasso.with(this)
                 .load(profile.avatarUrl)
+                .transform(CircleTransformPicasso())
                 .centerCrop()
                 .fit()
                 .into(ivAvatar)

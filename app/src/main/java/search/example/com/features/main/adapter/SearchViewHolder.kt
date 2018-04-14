@@ -5,6 +5,7 @@ import android.view.View
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_repo.view.*
 import search.example.com.data.models.RepoItem
+import search.example.com.utils.CircleTransformPicasso
 
 /**
  * View holder for items in [SearchAdapter]
@@ -17,6 +18,7 @@ class SearchViewHolder(view: View): RecyclerView.ViewHolder(view) {
             itemView.tv_item_name.text = owner.login
             Picasso.with(itemView.context)
                     .load(owner.avatarUrl)
+                    .transform(CircleTransformPicasso())
                     .fit()
                     .centerCrop()
                     .into(itemView.iv_item_avatar)
