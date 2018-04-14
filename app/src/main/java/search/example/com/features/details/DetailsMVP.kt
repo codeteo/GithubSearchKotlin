@@ -1,5 +1,7 @@
 package search.example.com.features.details
 
+import search.example.com.features.details.models.UserProfileViewModel
+
 /**
  * Contract between View and Presenter for [DetailsActivity]
  */
@@ -8,7 +10,7 @@ interface DetailsMVP {
 
     interface View {
 
-        fun showData()
+        fun showData(profile: UserProfileViewModel)
 
         fun showProgressBar()
 

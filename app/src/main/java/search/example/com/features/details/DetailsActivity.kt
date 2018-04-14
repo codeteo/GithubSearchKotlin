@@ -8,6 +8,8 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import dagger.android.support.DaggerAppCompatActivity
 import search.example.com.R
+import search.example.com.features.details.models.UserProfileViewModel
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -42,8 +44,8 @@ class DetailsActivity : DaggerAppCompatActivity(), DetailsMVP.View {
         supportActionBar?.title = "DETAILS"
     }
 
-    override fun showData() {
-        TODO("not implemented")
+    override fun showData(profile: UserProfileViewModel) {
+        Timber.i("MESA STO SHOW DATA")
     }
 
     override fun showProgressBar() {
