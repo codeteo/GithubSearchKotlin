@@ -6,6 +6,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import search.example.com.data.models.Repo
 import search.example.com.data.models.SearchRepositoryResponse
 import search.example.com.data.models.User
 
@@ -20,5 +21,8 @@ interface GithubApi {
 
     @GET("users/{username}")
     fun getUser(@Path("username") username: String): Single<Response<User>>
+
+    @GET("users/{username}/repos")
+    fun getUserRepos(@Path("username") username: String, @Query("page") page: Int): Single<Response<List<Repo>>>
 
 }
