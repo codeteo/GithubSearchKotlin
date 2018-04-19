@@ -1,7 +1,6 @@
 package search.example.com.features.details
 
 import io.reactivex.functions.BiConsumer
-import io.reactivex.functions.Consumer
 import search.example.com.data.api.GithubApi
 import search.example.com.features.details.models.UserProfileViewModel
 import search.example.com.utils.schedulers.BaseSchedulerProvider
@@ -30,10 +29,12 @@ class DetailsPresenter
                 }
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.androidMainThread())
-                .subscribe(Consumer {
-                    view?.hideProgressBar()
-                    view?.showData(it)
-                })
+                .subscribe({success ->
+                    run {
+                        view?.hideProgressBar()
+                        view?.showData(success)
+                    }
+                }, { error -> {}})
 
         service.getUserRepos(username, 0)
                 .subscribeOn(schedulerProvider.io())
